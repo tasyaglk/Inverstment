@@ -9,12 +9,21 @@ import UIKit
 
 class StocksVC: UIViewController {
     
-    var viewModel: StocksVM!
+    var viewModel: StocksVM
     
     private let tableView = UITableView()
     private let stockButton = UILabel()
     private let favouriteButton = UIButton()
-
+    
+    init(stocksViewModel: StocksVM) {
+        self.viewModel = stocksViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,27 +31,23 @@ class StocksVC: UIViewController {
         setUpView()
     }
     
-}
-
-extension StocksVC {
-    
-    func setUpView() {
+    private func setUpView() {
         setUpFirstLabel()
-//        setUpSecondLabel()
+        //        setUpSecondLabel()
         setUpTableView()
     }
     
-    func setUpFirstLabel() {
+    private func setUpFirstLabel() {
         view.addSubview(stockButton)
         
         stockButton.text = "Stocks"
         stockButton.font = UIFont(name: "Montserrat-Bold", size: 28)
         stockButton.textColor = .blackColor
         
-//        stockButton.titleLabel?.text = "Stocks"
-//        stockButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 28)
-//        stockButton.titleLabel?.textColor = .blackColor
-//        stockButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        //        stockButton.titleLabel?.text = "Stocks"
+        //        stockButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 28)
+        //        stockButton.titleLabel?.textColor = .blackColor
+        //        stockButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         stockButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -52,7 +57,7 @@ extension StocksVC {
         ])
     }
     
-    func setUpSecondLabel() {
+    private func setUpSecondLabel() {
         view.addSubview(favouriteButton)
         
         favouriteButton.titleLabel?.text = "Favourite"
@@ -68,7 +73,7 @@ extension StocksVC {
         ])
     }
     
-    func setUpTableView() {
+    private func setUpTableView() {
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +95,7 @@ extension StocksVC {
 
 extension StocksVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.stocks.count
+        viewModel.stocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

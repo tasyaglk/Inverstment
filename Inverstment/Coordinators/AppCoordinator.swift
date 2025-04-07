@@ -31,10 +31,9 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func goToListOfStocks() {
-        let stocksVC = StocksVC()
         let stocksVM = StocksVM()
+        let stocksVC = StocksVC(stocksViewModel: stocksVM)
         stocksVM.coordinator = self
-        stocksVC.viewModel = stocksVM
        
         navigationController.pushViewController(stocksVC, animated: false)
     }

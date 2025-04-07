@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StocksVM {
+final class StocksVM {
     weak var coordinator: AppCoordinator?
 
     var stocks: [StocksModel] = [
