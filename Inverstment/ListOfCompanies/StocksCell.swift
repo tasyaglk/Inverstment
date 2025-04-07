@@ -154,15 +154,15 @@ extension StocksCell {
 extension StocksCell {
     
     func createCell(stocksInfo: StocksModel) {
-        backgroundLayer.backgroundColor = stocksInfo.id! % 2 == 0 ? .grayColor : .white
+        backgroundLayer.backgroundColor = (stocksInfo.id ?? 0) % 2 == 0 ? .grayColor : .white
         image.image = UIImage(named: stocksInfo.imageURL ?? "YNDX")
         shortName.text = stocksInfo.shortName
         fullName.text = stocksInfo.fullName
-        let starImage = UIImage(named: stocksInfo.isFavourite! ? "starFilled" : "starNotFilled")
+        let starImage = UIImage(named: stocksInfo.isFavourite ?? false ? "starFilled" : "starNotFilled")
         favouriteButton.setImage(starImage, for: .normal)
         price.text = stocksInfo.price
         priceChanges.text = stocksInfo.priceChanges
-        priceChanges.textColor = stocksInfo.priceChanges!.hasPrefix("+") ? .greenColor : .redColor
+        priceChanges.textColor = (stocksInfo.priceChanges?.hasPrefix("+") ?? false) ? .greenColor : .redColor
     }
     
     @objc

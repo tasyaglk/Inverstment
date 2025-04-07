@@ -19,7 +19,6 @@ class AppCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        print("hi")
         goToListOfStocks()
     }
     

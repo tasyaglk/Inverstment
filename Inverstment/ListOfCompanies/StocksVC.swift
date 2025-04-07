@@ -14,13 +14,11 @@ class StocksVC: UIViewController {
     let tableView = UITableView()
     let stockButton = UILabel()
     let favouriteButton = UIButton()
-    var safeArea: UILayoutGuide!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
         setUpView()
     }
     
@@ -49,7 +47,7 @@ extension StocksVC {
         stockButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stockButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            stockButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stockButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
@@ -65,7 +63,7 @@ extension StocksVC {
         favouriteButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            favouriteButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            favouriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             favouriteButton.leadingAnchor.constraint(equalTo: stockButton.trailingAnchor, constant: 20)
         ])
     }
