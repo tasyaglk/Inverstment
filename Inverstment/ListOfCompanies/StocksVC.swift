@@ -11,9 +11,9 @@ class StocksVC: UIViewController {
     
     var viewModel: StocksVM!
     
-    let tableView = UITableView()
-    let stockButton = UILabel()
-    let favouriteButton = UIButton()
+    private let tableView = UITableView()
+    private let stockButton = UILabel()
+    private let favouriteButton = UIButton()
 
     
     override func viewDidLoad() {
@@ -101,7 +101,6 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
         cell.buttonAction = {
             self.viewModel.changeFavouriteStatus(id: indexPath.row)
             self.tableView.reloadData()
-            print("hi2 \(indexPath.row)")
         }
         cell.selectionStyle = .none
         return cell

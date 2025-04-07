@@ -7,12 +7,20 @@
 
 import UIKit
 
-class AppCoordinator: CoordinatorProtocol {
+private protocol CoordinatorProtocol {
+    var parentCoordinator: CoordinatorProtocol? { get set }
+    var childrenCoordinator: [CoordinatorProtocol] { get set }
+    var navigationController: UINavigationController { get set }
     
-    var parentCoordinator: CoordinatorProtocol?
-    var childrenCoordinator: [CoordinatorProtocol] = []
+    func start()
+}
+
+final class AppCoordinator: CoordinatorProtocol {
     
-    var navigationController: UINavigationController
+    fileprivate var parentCoordinator: CoordinatorProtocol?
+    fileprivate var childrenCoordinator: [CoordinatorProtocol] = []
+    
+    fileprivate var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -24,7 +32,7 @@ class AppCoordinator: CoordinatorProtocol {
     
     func goToListOfStocks() {
         let stocksVC = StocksVC()
-        let stocksVM = StocksVM.init()
+        let stocksVM = StocksVM()
         stocksVM.coordinator = self
         stocksVC.viewModel = stocksVM
        

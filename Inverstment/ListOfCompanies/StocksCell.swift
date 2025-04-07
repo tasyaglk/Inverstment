@@ -8,15 +8,15 @@
 import UIKit
 
 class StocksCell: UITableViewCell {
-    var viewModel: StocksVM!
+    private var viewModel: StocksVM!
     
-    let backgroundLayer = UIView()
-    let image = UIImageView()
-    let shortName = UILabel()
-    let fullName = UILabel()
-    let favouriteButton = UIButton()
-    let price = UILabel()
-    let priceChanges = UILabel()
+    private let backgroundLayer = UIView()
+    private let image = UIImageView()
+    private let shortName = UILabel()
+    private let fullName = UILabel()
+    private let favouriteButton = UIButton()
+    private let price = UILabel()
+    private let priceChanges = UILabel()
     
     var buttonAction: (() -> Void)?
     
@@ -24,7 +24,6 @@ class StocksCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpCell()
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
