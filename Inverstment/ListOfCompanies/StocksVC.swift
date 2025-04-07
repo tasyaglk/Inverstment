@@ -41,11 +41,11 @@ class StocksVC: UIViewController {
         view.addSubview(stockButton)
         
         stockButton.text = "Stocks"
-        stockButton.font = UIFont(name: "Montserrat-Bold", size: 28)
+        stockButton.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
         stockButton.textColor = .blackColor
         
         //        stockButton.titleLabel?.text = "Stocks"
-        //        stockButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 28)
+        //        stockButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
         //        stockButton.titleLabel?.textColor = .blackColor
         //        stockButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
@@ -53,7 +53,7 @@ class StocksVC: UIViewController {
         
         NSLayoutConstraint.activate([
             stockButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stockButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            stockButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.verticalOffset)
         ])
     }
     
@@ -61,7 +61,7 @@ class StocksVC: UIViewController {
         view.addSubview(favouriteButton)
         
         favouriteButton.titleLabel?.text = "Favourite"
-        favouriteButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: 18)
+        favouriteButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
         favouriteButton.titleLabel?.textColor = .grayTextColor
         favouriteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
@@ -69,7 +69,7 @@ class StocksVC: UIViewController {
         
         NSLayoutConstraint.activate([
             favouriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            favouriteButton.leadingAnchor.constraint(equalTo: stockButton.trailingAnchor, constant: 20)
+            favouriteButton.leadingAnchor.constraint(equalTo: stockButton.trailingAnchor, constant: Constants.verticalOffset)
         ])
     }
     
@@ -85,10 +85,10 @@ class StocksVC: UIViewController {
         tableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: stockButton.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: stockButton.bottomAnchor, constant: Constants.verticalOffset),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalOffset),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalOffset)
         ])
     }
 }
@@ -110,7 +110,5 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-    
-    
 }
 

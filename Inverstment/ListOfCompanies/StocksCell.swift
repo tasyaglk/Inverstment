@@ -42,13 +42,13 @@ class StocksCell: UITableViewCell {
         contentView.addSubview(backgroundLayer)
         
         backgroundLayer.layer.masksToBounds = true
-        backgroundLayer.layer.cornerRadius = 16
+        backgroundLayer.layer.cornerRadius = Constants.cellCornerRadius
         
         backgroundLayer.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            backgroundLayer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            backgroundLayer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            backgroundLayer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellBackgroundOffset),
+            backgroundLayer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.cellBackgroundOffset),
             backgroundLayer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundLayer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
@@ -59,30 +59,30 @@ class StocksCell: UITableViewCell {
         
         image.contentMode = .scaleAspectFit
         image.layer.masksToBounds = true
-        image.layer.cornerRadius = 12
+        image.layer.cornerRadius = Constants.imageCornerRadius
         
         image.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: 8),
-            image.leadingAnchor.constraint(equalTo: backgroundLayer.leadingAnchor, constant: 8),
-            image.bottomAnchor.constraint(equalTo: backgroundLayer.bottomAnchor, constant: -8),
-            image.heightAnchor.constraint(equalToConstant: 52),
-            image.widthAnchor.constraint(equalToConstant: 52)
+            image.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: Constants.imageOffset),
+            image.leadingAnchor.constraint(equalTo: backgroundLayer.leadingAnchor, constant: Constants.imageOffset),
+            image.bottomAnchor.constraint(equalTo: backgroundLayer.bottomAnchor, constant: -Constants.imageOffset),
+            image.heightAnchor.constraint(equalToConstant: Constants.imageSize),
+            image.widthAnchor.constraint(equalToConstant: Constants.imageSize)
         ])
     }
     
     private func setUpShortName() {
         backgroundLayer.addSubview(shortName)
         
-        shortName.font = UIFont(name: "Montserrat-Bold", size: 18)
+        shortName.font = UIFont(name: "Montserrat-Bold", size: Constants.cellBoldFontSize)
         shortName.textColor = .blackColor
         
         shortName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            shortName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 12),
-            shortName.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: 14),
+            shortName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: Constants.cellTrailingOffset),
+            shortName.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: Constants.cellTopOffset),
         ])
     }
     
@@ -98,50 +98,50 @@ class StocksCell: UITableViewCell {
         NSLayoutConstraint.activate([
             favouriteButton.bottomAnchor.constraint(equalTo: shortName.bottomAnchor),
             favouriteButton.topAnchor.constraint(equalTo: shortName.topAnchor),
-            favouriteButton.leadingAnchor.constraint(equalTo: shortName.trailingAnchor, constant: 6),
-            favouriteButton.heightAnchor.constraint(equalToConstant: 16),
-            favouriteButton.widthAnchor.constraint(equalToConstant: 16)
+            favouriteButton.leadingAnchor.constraint(equalTo: shortName.trailingAnchor, constant: Constants.cellLeadingOffset),
+            favouriteButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize),
+            favouriteButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize)
         ])
     }
     
     private func setUpFullName() {
         backgroundLayer.addSubview(fullName)
         
-        fullName.font = UIFont(name: "Montserrat-SemiBold", size: 12)
+        fullName.font = UIFont(name: "Montserrat-SemiBold", size: Constants.cellSemiBoldFontSize)
         fullName.textColor = .blackColor
         
         fullName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            fullName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 12),
-            fullName.topAnchor.constraint(equalTo: shortName.bottomAnchor, constant: 2),
+            fullName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: Constants.cellTrailingOffset),
+            fullName.topAnchor.constraint(equalTo: shortName.bottomAnchor, constant: Constants.cellBottomOffset),
         ])
     }
     
     private func setUpPrice() {
         backgroundLayer.addSubview(price)
         
-        price.font = UIFont(name: "Montserrat-Bold", size: 18)
+        price.font = UIFont(name: "Montserrat-Bold", size: Constants.cellBoldFontSize)
         price.textColor = .blackColor
         
         price.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            price.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: 14),
-            price.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -17)
+            price.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: Constants.cellTopOffset),
+            price.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset)
         ])
     }
     
     private func seUpPriceChanges() {
         backgroundLayer.addSubview(priceChanges)
         
-        priceChanges.font = UIFont(name: "Montserrat-SemiBold", size: 12)
+        priceChanges.font = UIFont(name: "Montserrat-SemiBold", size: Constants.cellSemiBoldFontSize)
         
         priceChanges.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            priceChanges.topAnchor.constraint(equalTo: price.bottomAnchor, constant: 2),
-            priceChanges.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -17),
+            priceChanges.topAnchor.constraint(equalTo: price.bottomAnchor, constant: Constants.cellBottomOffset),
+            priceChanges.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset),
         ])
     }
     
