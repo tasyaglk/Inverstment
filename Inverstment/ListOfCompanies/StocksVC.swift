@@ -41,7 +41,7 @@ class StocksVC: UIViewController {
         view.addSubview(stockButton)
         
         stockButton.text = "Stocks"
-        stockButton.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
+        stockButton.font = UIFont(name: "Montserrat-Bold", size: Constants.titleFontSize)
         stockButton.textColor = .blackColor
         
         //        stockButton.titleLabel?.text = "Stocks"
