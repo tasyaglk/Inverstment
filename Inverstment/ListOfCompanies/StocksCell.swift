@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StocksCell: UITableViewCell {
+final class StocksCell: UITableViewCell {
     
     private let backgroundLayer = UIView()
     private let image = UIImageView()
@@ -21,14 +21,7 @@ class StocksCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUpCell()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setUpCell() {
+        self.selectionStyle = .none
         setUpbackgroundLayer()
         setUpImage()
         setUpShortName()
@@ -36,6 +29,10 @@ class StocksCell: UITableViewCell {
         setUpFullName()
         setUpPrice()
         seUpPriceChanges()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setUpbackgroundLayer() {
@@ -75,7 +72,7 @@ class StocksCell: UITableViewCell {
     private func setUpShortName() {
         backgroundLayer.addSubview(shortName)
         
-        shortName.font = UIFont(name: "Montserrat-Bold", size: Constants.cellBoldFontSize)
+        shortName.font = UIFont(name: Constants.boldFont, size: Constants.cellBoldFontSize)
         shortName.textColor = .blackColor
         
         shortName.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +83,7 @@ class StocksCell: UITableViewCell {
         ])
     }
     
-    private func setUpFavouriteButton() { //!!!!!
+    private func setUpFavouriteButton() {
         backgroundLayer.addSubview(favouriteButton)
         
         favouriteButton.contentMode = .scaleAspectFit
@@ -107,7 +104,7 @@ class StocksCell: UITableViewCell {
     private func setUpFullName() {
         backgroundLayer.addSubview(fullName)
         
-        fullName.font = UIFont(name: "Montserrat-SemiBold", size: Constants.cellSemiBoldFontSize)
+        fullName.font = UIFont(name: Constants.semiBoldFont, size: Constants.cellSemiBoldFontSize)
         fullName.textColor = .blackColor
         
         fullName.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +118,7 @@ class StocksCell: UITableViewCell {
     private func setUpPrice() {
         backgroundLayer.addSubview(price)
         
-        price.font = UIFont(name: "Montserrat-Bold", size: Constants.cellBoldFontSize)
+        price.font = UIFont(name: Constants.boldFont, size: Constants.cellBoldFontSize)
         price.textColor = .blackColor
         
         price.translatesAutoresizingMaskIntoConstraints = false
@@ -135,7 +132,7 @@ class StocksCell: UITableViewCell {
     private func seUpPriceChanges() {
         backgroundLayer.addSubview(priceChanges)
         
-        priceChanges.font = UIFont(name: "Montserrat-SemiBold", size: Constants.cellSemiBoldFontSize)
+        priceChanges.font = UIFont(name: Constants.semiBoldFont, size: Constants.cellSemiBoldFontSize)
         
         priceChanges.translatesAutoresizingMaskIntoConstraints = false
         
@@ -143,11 +140,6 @@ class StocksCell: UITableViewCell {
             priceChanges.topAnchor.constraint(equalTo: price.bottomAnchor, constant: Constants.cellBottomOffset),
             priceChanges.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset),
         ])
-    }
-    
-    @objc
-    private func favouriteButtonTapped() {
-        self.buttonAction?()
     }
     
     func createCell(stocksInfo: StocksModel) {
@@ -161,5 +153,9 @@ class StocksCell: UITableViewCell {
         priceChanges.text = stocksInfo.priceChanges
         priceChanges.textColor = (stocksInfo.priceChanges?.hasPrefix("+") ?? false) ? .greenColor : .redColor
     }
+    
+    @objc
+    private func favouriteButtonTapped() {
+        self.buttonAction?()
+    }
 }
-

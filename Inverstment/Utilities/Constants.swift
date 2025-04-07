@@ -27,4 +27,10 @@ enum Constants {
     static let imageOffset: CGFloat = 8
     
     static let buttonSize: CGFloat = 16
+    
+    static let stocksLabel = "Stocks"
+    static let favouriteLabel = "Favourite"
+    
+    static let boldFont = "Montserrat-Bold"
+    static let semiBoldFont = "Montserrat-SemiBold"
 }

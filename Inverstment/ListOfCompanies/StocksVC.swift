@@ -9,7 +9,7 @@ import UIKit
 
 class StocksVC: UIViewController {
     
-    var viewModel: StocksVM
+    private var viewModel: StocksVM
     
     private let tableView = UITableView()
     private let stockButton = UILabel()
@@ -33,21 +33,15 @@ class StocksVC: UIViewController {
     
     private func setUpView() {
         setUpFirstLabel()
-        //        setUpSecondLabel()
         setUpTableView()
     }
     
     private func setUpFirstLabel() {
         view.addSubview(stockButton)
         
-        stockButton.text = "Stocks"
-        stockButton.font = UIFont(name: "Montserrat-Bold", size: Constants.titleFontSize)
+        stockButton.text = Constants.stocksLabel
+        stockButton.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
         stockButton.textColor = .blackColor
-        
-        //        stockButton.titleLabel?.text = "Stocks"
-        //        stockButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
-        //        stockButton.titleLabel?.textColor = .blackColor
-        //        stockButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         stockButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -60,8 +54,8 @@ class StocksVC: UIViewController {
     private func setUpSecondLabel() {
         view.addSubview(favouriteButton)
         
-        favouriteButton.titleLabel?.text = "Favourite"
-        favouriteButton.titleLabel?.font = UIFont(name: "Montserrat-Bold", size: Constants.boldFontSize)
+        favouriteButton.titleLabel?.text = Constants.favouriteLabel
+        favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
         favouriteButton.titleLabel?.textColor = .grayTextColor
         favouriteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
@@ -107,8 +101,6 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
             self.viewModel.changeFavouriteStatus(id: indexPath.row)
             self.tableView.reloadData()
         }
-        cell.selectionStyle = .none
         return cell
     }
 }
-

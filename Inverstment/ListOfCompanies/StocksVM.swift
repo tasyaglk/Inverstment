@@ -8,7 +8,11 @@
 import Foundation
 
 final class StocksVM {
-    weak var coordinator: AppCoordinator?
+    private weak var coordinator: AppCoordinator?
+    
+    init(coordinator: AppCoordinator) {
+            self.coordinator = coordinator
+        }
 
     var stocks: [StocksModel] = [
         StocksModel(id: 0, imageURL: "YNDX", fullName: "Yandex, LLC", shortName: "YNDX", price: "4 764,6 ₽", priceChanges: "+55 ₽ (1,15%)", isFavourite: false),
