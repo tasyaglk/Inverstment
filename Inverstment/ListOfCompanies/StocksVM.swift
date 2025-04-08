@@ -36,7 +36,8 @@ final class StocksVM {
     ]
     
     func changeFavouriteStatus(id: Int) {
-        var stock = stocks[id]
-        stocks[id] = StocksModel(id: stock.id, imageURL: stock.imageURL, fullName: stock.fullName, shortName: stock.shortName, price: stock.price, priceChanges: stock.priceChanges, isFavourite: !(stock.isFavourite ?? false))
+        let stock = stocks[id]
+        let isFavourite = stock.isFavourite
+        stocks[id] = StocksModel(stock: stock, isFavourite: !(isFavourite ?? false))
     }
 }

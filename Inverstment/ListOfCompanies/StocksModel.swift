@@ -26,4 +26,23 @@ struct StocksModel {
         self.priceChanges = priceChanges
         self.isFavourite = isFavourite
     }
+    
+    init(
+        stock: StocksModel,
+        id: Int? = nil,
+        imageURL: String? = nil,
+        fullName: String? = nil,
+        shortName: String? = nil,
+        price: String? = nil,
+        priceChanges: String? = nil,
+        isFavourite: Bool? = nil
+    ) {
+        self.id = id == nil ? stock.id : id
+        self.imageURL = imageURL == nil ? stock.imageURL : imageURL
+        self.fullName = fullName == nil ? stock.fullName : fullName
+        self.shortName = shortName == nil ? stock.shortName : shortName
+        self.price = price == nil ? stock.price : price
+        self.priceChanges = priceChanges == nil ? stock.priceChanges : priceChanges
+        self.isFavourite = isFavourite == nil ? stock.isFavourite : isFavourite
+    }
 }
