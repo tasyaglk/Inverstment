@@ -97,9 +97,9 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.createCell(stocksInfo: viewModel.stocks[indexPath.row])
-        cell.buttonAction = {
-            self.viewModel.changeFavouriteStatus(id: indexPath.row)
-            self.tableView.reloadData()
+        cell.buttonAction = { [weak self] in
+            self?.viewModel.changeFavouriteStatus(id: indexPath.row)
+            self?.tableView.reloadData()
         }
         return cell
     }
