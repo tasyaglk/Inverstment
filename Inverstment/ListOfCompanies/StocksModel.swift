@@ -15,5 +15,15 @@ struct StocksModel {
     let shortName: String?
     let price: String?
     let priceChanges: String?
-    var isFavourite: Bool?
+    let isFavourite: Bool?
+    
+    init(id: Int?, imageURL: String?, fullName: String?, shortName: String?, price: String?, priceChanges: String?, isFavourite: Bool?) {
+        self.id = id
+        self.imageURL = imageURL
+        self.fullName = fullName
+        self.shortName = shortName
+        self.price = price
+        self.priceChanges = priceChanges
+        self.isFavourite = isFavourite
+    }
 }
