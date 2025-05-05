@@ -12,8 +12,9 @@ class StocksVC: UIViewController {
     private var viewModel: StocksVM
     
     private let tableView = UITableView()
-    private let stockButton = UILabel()
+    private let stockButton = UIButton()
     private let favouriteButton = UIButton()
+    private let stackView = UIStackView()
     
     init(stocksViewModel: StocksVM) {
         self.viewModel = stocksViewModel
@@ -31,39 +32,50 @@ class StocksVC: UIViewController {
     }
     
     private func setUpView() {
-        setUpFirstLabel()
+        
+        setUpStockButton()
+        setUpFavouriteButton()
+        setUpStack()
         setUpTableView()
     }
     
-    private func setUpFirstLabel() {
-        view.addSubview(stockButton)
+    private func setUpStack() {
+        view.addSubview(stackView)
         
-        stockButton.text = Constants.stocksLabel
-        stockButton.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
-        stockButton.textColor = .blackColor
+        stackView.axis = .horizontal
+        stackView.spacing = Constants.verticalOffset
+        stackView.distribution = .fill
+        stackView.alignment = .leading
         
-        stockButton.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(stockButton)
+        stackView.addArrangedSubview(favouriteButton)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stockButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stockButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.verticalOffset)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.verticalOffset),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -Constants.verticalOffset),
+            stackView.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
     
-    private func setUpSecondLabel() {
-        view.addSubview(favouriteButton)
+    private func setUpStockButton() {
         
-        favouriteButton.titleLabel?.text = Constants.favouriteLabel
+        stockButton.setTitle(Constants.stocksLabel, for: .normal)
+        stockButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
+        stockButton.setTitleColor(.blackColor, for: .normal)
+        
+        stockButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
+    }
+    
+    private func setUpFavouriteButton() {
+        
+        favouriteButton.setTitle(Constants.favouriteLabel, for: .normal)
         favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
-        favouriteButton.titleLabel?.textColor = .grayTextColor
-        favouriteButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        favouriteButton.setTitleColor(.grayTextColor, for: .normal)
         
-        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            favouriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            favouriteButton.leadingAnchor.constraint(equalTo: stockButton.trailingAnchor, constant: Constants.verticalOffset)
-        ])
+        favouriteButton.addTarget(self, action: #selector(stocksTapped2), for: .touchUpInside)
     }
     
     private func setUpTableView() {
@@ -78,11 +90,38 @@ class StocksVC: UIViewController {
         tableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: stockButton.bottomAnchor, constant: Constants.verticalOffset),
+            tableView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.verticalOffset),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalOffset),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalOffset)
         ])
+    }
+    
+    @objc func stocksTapped() {
+        viewModel.changeButton()
+        changeButtonAppereance()
+        print("hui")
+    }
+    
+    @objc func stocksTapped2() {
+        viewModel.changeButton()
+        changeButtonAppereance()
+        print("hui2")
+    }
+    
+    private func changeButtonAppereance() {
+        
+        if viewModel.isStocksSelected {
+            stockButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
+            stockButton.setTitleColor(.blackColor, for: .normal)
+            favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
+            favouriteButton.setTitleColor(.grayTextColor, for: .normal)
+        } else {
+            favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
+            favouriteButton.setTitleColor(.blackColor, for: .normal)
+            stockButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
+            stockButton.setTitleColor(.grayTextColor, for: .normal)
+        }
     }
 }
 

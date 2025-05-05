@@ -35,9 +35,15 @@ final class StocksVM {
         StocksModel(id: 5, imageURL: "YNDX",fullName: "Microsoft Corporation", shortName: "MSFT", price: "$3 204", priceChanges: "+$0.12 (1,15%)", isFavourite: true),
     ]
     
+    var isStocksSelected: Bool = true
+    
     func changeFavouriteStatus(id: Int) {
         let stock = stocks[id]
         let isFavourite = stock.isFavourite
         stocks[id] = StocksModel(stock: stock, isFavourite: !(isFavourite ?? false))
+    }
+    
+    func changeButton() {
+        isStocksSelected.toggle()
     }
 }
