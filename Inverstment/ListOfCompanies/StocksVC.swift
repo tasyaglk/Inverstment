@@ -75,7 +75,7 @@ class StocksVC: UIViewController {
         favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
         favouriteButton.setTitleColor(.grayTextColor, for: .normal)
         
-        favouriteButton.addTarget(self, action: #selector(stocksTapped2), for: .touchUpInside)
+        favouriteButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
     }
     
     private func setUpTableView() {
@@ -100,13 +100,7 @@ class StocksVC: UIViewController {
     @objc func stocksTapped() {
         viewModel.changeButton()
         changeButtonAppereance()
-        print("hui")
-    }
-    
-    @objc func stocksTapped2() {
-        viewModel.changeButton()
-        changeButtonAppereance()
-        print("hui2")
+        tableView.reloadData()
     }
     
     private func changeButtonAppereance() {
@@ -127,14 +121,14 @@ class StocksVC: UIViewController {
 
 extension StocksVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.stocks.count
+        viewModel.currentStocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? StocksCell else {
             return UITableViewCell()
         }
-        cell.createCell(stocksInfo: viewModel.stocks[indexPath.row])
+        cell.createCell(stocksInfo: viewModel.currentStocks[indexPath.row])
         cell.buttonAction = { [weak self] in
             self?.viewModel.changeFavouriteStatus(id: indexPath.row)
             self?.tableView.reloadData()
