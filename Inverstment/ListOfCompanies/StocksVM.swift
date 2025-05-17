@@ -11,11 +11,14 @@ final class StocksVM {
     private weak var coordinator: AppCoordinator?
     
     var isStocksSelected: Bool = true
+    var filteredStocks: [StocksModel] = []
+    var currentSearchText: String = ""
     
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
+        self.filteredStocks = self.stocks
     }
-
+    
     var stocks: [StocksModel] = [
         StocksModel(id: 0, imageURL: "YNDX", fullName: "Yandex, LLC", shortName: "YNDX", price: "4 764,6 ₽", priceChanges: "+55 ₽ (1,15%)", isFavourite: false),
         StocksModel(id: 1, imageURL: "YNDX",fullName: "Apple Inc.", shortName: "AAPL", price: "$131.93", priceChanges: "+$0.12 (1,15%)", isFavourite: true),
@@ -42,12 +45,34 @@ final class StocksVM {
     }
     
     func changeFavouriteStatus(id: Int) {
-        let stock = currentStocks[id]
-        let isFavourite = stock.isFavourite
-        stocks[stock.id ?? 0] = StocksModel(stock: stock, isFavourite: !(isFavourite ?? false))
+        if let index = stocks.firstIndex(where: { $0.id == id }) {
+            let stock = stocks[index]
+            let isFavourite = stock.isFavourite ?? false
+            stocks[index] = StocksModel(stock: stock, isFavourite: !isFavourite)
+            filterStocks(by: currentSearchText)
+        } else {
+            print("no \(id)")
+        }
     }
     
     func changeButton() {
         isStocksSelected.toggle()
+    }
+    
+    func filterStocks(by text: String) {
+        currentSearchText = text
+        if text.isEmpty {
+            filteredStocks = currentStocks
+        } else {
+            filteredStocks = currentStocks.filter {
+                guard let fullName = $0.fullName?.lowercased() else { return false }
+                let searchText = text.lowercased()
+                return fullName.contains(searchText)
+            }
+        }
+    }
+    
+    func clearFilteredStocks() {
+        filteredStocks = []
     }
 }

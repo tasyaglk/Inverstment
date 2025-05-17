@@ -28,9 +28,19 @@ enum Constants {
     
     static let buttonSize: CGFloat = 16
     
+    static let searchBarHeight: CGFloat = 40
+    
+    static let stackViewSpacing: CGFloat = 16
+    static let stackViewHeight: CGFloat = 32
+    static let stackViewTopOffset: CGFloat = 20
+    static let tableViewOffset: CGFloat = 16
+    
+    static let cellIdentifier = "StocksCell"
+    
     static let stocksLabel = "Stocks"
     static let favouriteLabel = "Favourite"
     
     static let boldFont = "Montserrat-Bold"
     static let semiBoldFont = "Montserrat-SemiBold"
+    
 }
