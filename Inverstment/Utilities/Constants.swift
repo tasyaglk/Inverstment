@@ -12,6 +12,7 @@ enum Constants {
     static let horizontalOffset: CGFloat = 16
     static let titleFontSize: CGFloat = 28
     static let boldFontSize: CGFloat = 18
+    static let semiBoldFontSize: CGFloat = 16
     
     static let cellBoldFontSize: CGFloat = 18
     static let cellSemiBoldFontSize: CGFloat = 12

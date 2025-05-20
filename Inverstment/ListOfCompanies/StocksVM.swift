@@ -9,10 +9,9 @@ import Foundation
 
 final class StocksVM {
     private weak var coordinator: AppCoordinator?
+    private var lastSearchText: String?
     
     var isStocksSelected: Bool = true
-    var filteredStocks: [StocksModel] = []
-    var currentSearchText: String = ""
     
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
@@ -44,12 +43,36 @@ final class StocksVM {
         isStocksSelected ? stocks : stocks.filter { $0.isFavourite ?? false }
     }
     
+    var filteredStocks: [StocksModel] = []
+    
+    func search(text: String?) {
+        lastSearchText = text
+        if let text = text, !text.isEmpty {
+            filteredStocks = currentStocks.filter {
+                guard let fullName = $0.fullName?.lowercased() else { return false }
+                let searchText = text.lowercased()
+                return fullName.contains(searchText)
+            }
+        } else {
+            filteredStocks = currentStocks
+        }
+    }
+    
+    func clearSearch() {
+        lastSearchText = nil
+        filteredStocks = []
+    }
+    
     func changeFavouriteStatus(id: Int) {
         if let index = stocks.firstIndex(where: { $0.id == id }) {
             let stock = stocks[index]
             let isFavourite = stock.isFavourite ?? false
             stocks[index] = StocksModel(stock: stock, isFavourite: !isFavourite)
-            filterStocks(by: currentSearchText)
+            if let searchText = lastSearchText {
+                search(text: searchText)
+            } else {
+                filteredStocks = currentStocks
+            }
         } else {
             print("no \(id)")
         }
@@ -57,22 +80,9 @@ final class StocksVM {
     
     func changeButton() {
         isStocksSelected.toggle()
-    }
-    
-    func filterStocks(by text: String) {
-        currentSearchText = text
-        if text.isEmpty {
-            filteredStocks = currentStocks
-        } else {
-            filteredStocks = currentStocks.filter {
-                guard let fullName = $0.fullName?.lowercased() else { return false }
-                let searchText = text.lowercased()
-                return fullName.contains(searchText)
-            }
+        filteredStocks = isStocksSelected ? stocks : stocks.filter { $0.isFavourite ?? false }
+        if let searchText = lastSearchText {
+            search(text: searchText)
         }
-    }
-    
-    func clearFilteredStocks() {
-        filteredStocks = []
     }
 }

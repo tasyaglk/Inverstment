@@ -11,11 +11,11 @@ class StocksVC: UIViewController {
     
     private var viewModel: StocksVM
     
+    private let searchBar = CustomSearchBar()
     private let tableView = UITableView()
     private let stockButton = UIButton()
     private let favouriteButton = UIButton()
     private let stackView = UIStackView()
-    private let searchBar = UISearchBar()
     
     init(stocksViewModel: StocksVM) {
         self.viewModel = stocksViewModel
@@ -43,22 +43,23 @@ class StocksVC: UIViewController {
     private func setUpSearchBar() {
         view.addSubview(searchBar)
         
-        searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "Find company or ticker"
-        searchBar.layer.cornerRadius = 10
-        searchBar.clipsToBounds = true
-        searchBar.backgroundImage = UIImage()
-        if let textField = searchBar.value(forKey: "searchTextField") as? UITextField {
-            textField.clearButtonMode = .whileEditing
-        }
-        searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
+        searchBar.onTextChange = { [weak self] text in
+            self?.viewModel.search(text: text)
+            self?.tableView.reloadData()
+        }
+        
+        searchBar.onClear = { [weak self] in
+            self?.viewModel.clearSearch()
+            self?.tableView.reloadData()
+        }
+        
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.verticalOffset),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.verticalOffset),
-            searchBar.heightAnchor.constraint(equalToConstant: Constants.searchBarHeight)
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            searchBar.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     
@@ -123,7 +124,6 @@ class StocksVC: UIViewController {
     @objc func stocksTapped() {
         viewModel.changeButton()
         changeButtonAppereance()
-        viewModel.filterStocks(by: searchBar.text ?? "")
         tableView.reloadData()
     }
     
@@ -161,29 +161,5 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
-    }
-}
-
-extension StocksVC: UISearchBarDelegate {
-    func searchBarShouldBeginaEditing(_ searchBar: UISearchBar) -> Bool {
-        viewModel.clearFilteredStocks()
-        tableView.reloadData()
-        return true
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.filterStocks(by: searchText)
-        tableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        viewModel.filterStocks(by: "")
-        searchBar.resignFirstResponder()
-        tableView.reloadData()
     }
 }
