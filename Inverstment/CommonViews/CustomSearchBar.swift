@@ -35,16 +35,26 @@ class CustomSearchBar: UIView {
         addSubview(textField)
         
         textField.borderStyle = .none
-        textField.placeholder = "Find company or ticker"
         textField.backgroundColor = .clear
-        textField.layer.cornerRadius = 20
-        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = Constants.searchBarCornerRadius
+        textField.layer.borderWidth = Constants.searchBarBorderWidth
         textField.layer.borderColor = UIColor.blackColor.cgColor
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.searchBarLeftPadding, height: 0))
         textField.leftViewMode = .always
         textField.rightViewMode = .whileEditing
         textField.returnKeyType = .search
         textField.font = UIFont(name: Constants.semiBoldFont, size: Constants.semiBoldFontSize)
+        textField.textColor = .blackColor
+        
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.blackColor,
+            .font: UIFont(name: Constants.semiBoldFont, size: Constants.semiBoldFontSize) ?? .systemFont(ofSize: Constants.semiBoldFontSize)
+        ]
+        
+        textField.attributedPlaceholder = NSAttributedString(
+            string: Constants.searchBarPlaceholderText,
+            attributes: placeholderAttributes
+        )
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,23 +72,23 @@ class CustomSearchBar: UIView {
     private func setUpleftArrow() {
         textField.addSubview(leftArrow)
         
-        leftArrow.image = UIImage(named: "Search")
+        leftArrow.image = UIImage(named: Constants.searchBarSearchIconName)
         leftArrow.contentMode = .center
         
         leftArrow.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            leftArrow.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 10),
+            leftArrow.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: Constants.searchBarIconLeadingPadding),
             leftArrow.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            leftArrow.widthAnchor.constraint(equalToConstant: 20),
-            leftArrow.heightAnchor.constraint(equalToConstant: 20)
+            leftArrow.widthAnchor.constraint(equalToConstant: Constants.searchBarIconSize),
+            leftArrow.heightAnchor.constraint(equalToConstant: Constants.searchBarIconSize)
         ])
     }
     
     private func setUpClearButton() {
-        textField.addSubview(clearButton)
+        addSubview(clearButton)
         
-        clearButton.setImage(UIImage(named: "Close"), for: .normal)
+        clearButton.setImage(UIImage(named: Constants.searchBarClearIconName), for: .normal)
         clearButton.tintColor = .blackColor
         clearButton.isHidden = true
         
@@ -87,14 +97,15 @@ class CustomSearchBar: UIView {
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            clearButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -10),
+            clearButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: Constants.searchBarClearButtonTrailingPadding),
             clearButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            clearButton.widthAnchor.constraint(equalToConstant: 20),
-            clearButton.heightAnchor.constraint(equalToConstant: 20)
+            clearButton.widthAnchor.constraint(equalToConstant: Constants.searchBarIconSize),
+            clearButton.heightAnchor.constraint(equalToConstant: Constants.searchBarIconSize)
         ])
     }
     
     @objc private func textDidChange() {
+        textField.attributedPlaceholder = nil
         updateState(isEditing: true, text: textField.text)
         onTextChange?(textField.text)
     }
@@ -106,7 +117,7 @@ class CustomSearchBar: UIView {
     }
     
     func updateState(isEditing: Bool, text: String?) {
-        leftArrow.image = UIImage(named: (!isEditing && ((text?.isEmpty) != nil)) ? "Search" : "Back")
+        leftArrow.image = UIImage(named: (!isEditing && ((text?.isEmpty) != nil)) ? Constants.searchBarSearchIconName : Constants.searchBarBackIconName)
         clearButton.isHidden = text?.isEmpty ?? true
     }
 }

@@ -29,12 +29,22 @@ enum Constants {
     
     static let buttonSize: CGFloat = 16
     
-    static let searchBarHeight: CGFloat = 40
-    
     static let stackViewSpacing: CGFloat = 16
     static let stackViewHeight: CGFloat = 32
     static let stackViewTopOffset: CGFloat = 20
     static let tableViewOffset: CGFloat = 16
+    
+    static let searchBarHeight: CGFloat = 48
+    static let searchBarCornerRadius: CGFloat = 20
+    static let searchBarBorderWidth: CGFloat = 1
+    static let searchBarLeftPadding: CGFloat = 48
+    static let searchBarIconLeadingPadding: CGFloat = 10
+    static let searchBarIconSize: CGFloat = 20
+    static let searchBarClearButtonTrailingPadding: CGFloat = -10
+    static let searchBarPlaceholderText: String = "Find company or ticker"
+    static let searchBarSearchIconName: String = "Search"
+    static let searchBarBackIconName: String = "Back"
+    static let searchBarClearIconName: String = "Close"
     
     static let cellIdentifier = "StocksCell"
     

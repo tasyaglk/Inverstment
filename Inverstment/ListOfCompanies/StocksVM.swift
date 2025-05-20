@@ -60,7 +60,7 @@ final class StocksVM {
     
     func clearSearch() {
         lastSearchText = nil
-        filteredStocks = []
+        filteredStocks = currentStocks
     }
     
     func changeFavouriteStatus(id: Int) {

@@ -56,10 +56,10 @@ class StocksVC: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            searchBar.heightAnchor.constraint(equalToConstant: 48)
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalOffset),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalOffset),
+            searchBar.heightAnchor.constraint(equalToConstant: Constants.searchBarHeight)
         ])
     }
     
