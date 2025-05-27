@@ -121,7 +121,7 @@ class StocksVC: UIViewController {
         ])
     }
     
-    @objc func stocksTapped() {
+    @objc private func stocksTapped() {
         viewModel.changeButton()
         changeButtonAppereance()
         tableView.reloadData()

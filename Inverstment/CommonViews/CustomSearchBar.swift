@@ -7,32 +7,13 @@
 
 import UIKit
 
-class CustomSearchBar: UIView {
+final class CustomSearchBar: UIView {
     
-    private let textField = UITextField()
     private let leftArrow = UIImageView()
     private let clearButton = UIButton(type: .system)
     
-    var onTextChange: ((String?) -> Void)?
-    var onClear: (() -> Void)?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setUpView() {
-        setUpTextField()
-        setUpleftArrow()
-        setUpClearButton()
-    }
-    
-    private func setUpTextField() {
-        addSubview(textField)
+    private lazy var textField: UITextField = {
+        let textField = UITextField()
         
         textField.borderStyle = .none
         textField.backgroundColor = .clear
@@ -60,6 +41,30 @@ class CustomSearchBar: UIView {
         
         textField.delegate = self
         textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        return textField
+    }()
+    
+    var onTextChange: ((String?) -> Void)?
+    var onClear: (() -> Void)?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpView() {
+        setUpTextField()
+        setUpleftArrow()
+        setUpClearButton()
+    }
+    
+    private func setUpTextField() {
+        addSubview(textField)
         
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
