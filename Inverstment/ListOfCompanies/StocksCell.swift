@@ -26,9 +26,9 @@ final class StocksCell: UITableViewCell {
         setUpImage()
         setUpShortName()
         setUpFavouriteButton()
-        setUpFullName()
         setUpPrice()
-        seUpPriceChanges()
+        setUpFullName()
+        setUpPriceChanges()
     }
     
     required init?(coder: NSCoder) {
@@ -87,7 +87,6 @@ final class StocksCell: UITableViewCell {
         backgroundLayer.addSubview(favouriteButton)
         
         favouriteButton.contentMode = .scaleAspectFit
-        
         favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         
         favouriteButton.translatesAutoresizingMaskIntoConstraints = false
@@ -106,12 +105,16 @@ final class StocksCell: UITableViewCell {
         
         fullName.font = UIFont(name: Constants.semiBoldFont, size: Constants.cellSemiBoldFontSize)
         fullName.textColor = .blackColor
+        fullName.numberOfLines = 0
+        fullName.lineBreakMode = .byWordWrapping 
         
         fullName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             fullName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: Constants.cellTrailingOffset),
             fullName.topAnchor.constraint(equalTo: shortName.bottomAnchor, constant: Constants.cellBottomOffset),
+            fullName.trailingAnchor.constraint(equalTo: price.leadingAnchor, constant: -Constants.cellTrailingOffset),
+            fullName.bottomAnchor.constraint(lessThanOrEqualTo: backgroundLayer.bottomAnchor, constant: -Constants.cellBottomOffset)
         ])
     }
     
@@ -120,30 +123,34 @@ final class StocksCell: UITableViewCell {
         
         price.font = UIFont(name: Constants.boldFont, size: Constants.cellBoldFontSize)
         price.textColor = .blackColor
+        price.textAlignment = .right
         
         price.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             price.topAnchor.constraint(equalTo: backgroundLayer.topAnchor, constant: Constants.cellTopOffset),
-            price.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset)
+            price.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset),
+            price.widthAnchor.constraint(greaterThanOrEqualToConstant: 80)
         ])
     }
     
-    private func seUpPriceChanges() {
+    private func setUpPriceChanges() {
         backgroundLayer.addSubview(priceChanges)
         
         priceChanges.font = UIFont(name: Constants.semiBoldFont, size: Constants.cellSemiBoldFontSize)
+        priceChanges.textAlignment = .right
         
         priceChanges.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             priceChanges.topAnchor.constraint(equalTo: price.bottomAnchor, constant: Constants.cellBottomOffset),
             priceChanges.trailingAnchor.constraint(equalTo: backgroundLayer.trailingAnchor, constant: -Constants.cellTrailingOffset),
+            priceChanges.widthAnchor.constraint(greaterThanOrEqualToConstant: 80)
         ])
     }
     
-    func createCell(stocksInfo: StocksModel) {
-        backgroundLayer.backgroundColor = (stocksInfo.id ?? 0) % 2 == 0 ? .grayColor : .white
+    func createCell(stocksInfo: StocksModel, rowIndex: Int) {
+        backgroundLayer.backgroundColor = rowIndex % 2 == 0 ? .grayColor : .white
         image.image = UIImage(named: stocksInfo.imageURL ?? "YNDX")
         shortName.text = stocksInfo.shortName
         fullName.text = stocksInfo.fullName

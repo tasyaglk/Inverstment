@@ -18,7 +18,7 @@ struct StocksModel {
     //         -"companyName": "SoFi Technologies, Inc."
     //       }
     
-    let id: Int?
+    let id: UUID?
     let imageURL: String?
     let fullName: String?
     let shortName: String?
@@ -28,7 +28,7 @@ struct StocksModel {
     let isFavourite: Bool?
     
     init(
-        id: Int?,
+        id: UUID?,
         imageURL: String?,
         fullName: String?,
         shortName: String?,
@@ -49,7 +49,7 @@ struct StocksModel {
     
     init(
         stock: StocksModel,
-        id: Int? = nil,
+        id: UUID? = nil,
         imageURL: String? = nil,
         fullName: String? = nil,
         shortName: String? = nil,

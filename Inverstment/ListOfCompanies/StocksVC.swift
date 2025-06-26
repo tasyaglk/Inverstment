@@ -153,7 +153,7 @@ extension StocksVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let stock = viewModel.filteredStocks[indexPath.row]
-        cell.createCell(stocksInfo: stock)
+        cell.createCell(stocksInfo: stock, rowIndex: indexPath.row)
         cell.buttonAction = { [weak self] in
             if let stockId = stock.id {
                 self?.viewModel.changeFavouriteStatus(id: stockId)
