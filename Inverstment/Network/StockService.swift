@@ -55,8 +55,6 @@ class StockService {
                           let companyName = dict["companyName"] as? String else {
                         return nil
                     }
-                
-                    let priceValue = Double(price) ?? 0.0
                     
                     
                     let percentageValue = Double(changesPercentage) ?? 0.0
@@ -72,7 +70,7 @@ class StockService {
                     
                     return StocksModel(
                         id: UUID(),
-                        imageURL: nil,
+                        imageURL: "https://financialmodelingprep.com/image-stock/\(ticker).png",
                         fullName: companyName,
                         shortName: ticker,
                         price: "$" + price, // как подтянуть валюту?
