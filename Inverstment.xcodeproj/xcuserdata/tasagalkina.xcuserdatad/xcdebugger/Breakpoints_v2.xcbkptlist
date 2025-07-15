@@ -18,50 +18,6 @@
             endingLineNumber = "72"
             landmarkName = "changeFavouriteStatus(id:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CB1C9257-64D5-4084-862B-C22CBAA0FE5D - 11f14b00a7466f58"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Inverstment.StocksVM.changeFavouriteStatus(id: Foundation.UUID) -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-               <Location
-                  uuid = "CB1C9257-64D5-4084-862B-C22CBAA0FE5D - 11f14b00a7466f58"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Inverstment.StocksVM.changeFavouriteStatus(id: Foundation.UUID) -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-               <Location
-                  uuid = "CB1C9257-64D5-4084-862B-C22CBAA0FE5D - 953affe3ec8a7e57"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Inverstment.StocksModel) -&gt; Swift.Bool in Inverstment.StocksVM.changeFavouriteStatus(id: Foundation.UUID) -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -238,36 +194,6 @@
             endingLineNumber = "88"
             landmarkName = "changeButton()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6595F2A6-D8D8-4A76-8E25-4C73304FE792 - 89016d6e5187c6cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Inverstment.StocksVM.changeButton() -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88">
-               </Location>
-               <Location
-                  uuid = "6595F2A6-D8D8-4A76-8E25-4C73304FE792 - d4ab90efbe3e8be2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Inverstment.StocksModel) -&gt; Swift.Bool in Inverstment.StocksVM.changeButton() -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -332,36 +258,6 @@
             endingLineNumber = "62"
             landmarkName = "setUpSearchBar()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F905A010-4DC5-4322-9B21-BD5B5A4806B6 - faa68d1629f7e6ad"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Inverstment.StocksVC.setUpSearchBar() -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53">
-               </Location>
-               <Location
-                  uuid = "F905A010-4DC5-4322-9B21-BD5B5A4806B6 - b9f3faef7a5f956e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in Inverstment.StocksVC.setUpSearchBar() -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/ListOfCompanies/StocksVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -426,36 +322,6 @@
             endingLineNumber = "50"
             landmarkName = "fetchActiveStocks(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "338AE9A0-18D5-41B1-A45F-E13EDDA434BC - 3e08ee11bfec8ae2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Inverstment.StockService.fetchActiveStocks(completion: (Swift.Result&lt;Swift.Array&lt;Inverstment.StocksModel&gt;, Inverstment.StockServiceError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/Network/StockService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50">
-               </Location>
-               <Location
-                  uuid = "338AE9A0-18D5-41B1-A45F-E13EDDA434BC - d9c67c467eee7d90"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;Inverstment.StocksModel&gt; in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Inverstment.StockService.fetchActiveStocks(completion: (Swift.Result&lt;Swift.Array&lt;Inverstment.StocksModel&gt;, Inverstment.StockServiceError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Inverstment.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tasagalkina/Downloads/Inverstment-groupOfStocks/Inverstment/Network/StockService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
