@@ -29,6 +29,15 @@ class StocksVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        viewModel.fetchStocks { result in
+            switch result {
+            case .success:
+                print("success")
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("error \(error.errorDescription ?? "error")")
+            }
+        }
         setUpView()
     }
     

@@ -25,14 +25,6 @@ final class AppCoordinator: CoordinatorProtocol {
     func goToListOfStocks() {
         let stocksVM = StocksVM(coordinator: self)
         let stocksVC = StocksVC(stocksViewModel: stocksVM)
-        stocksVM.fetchStocks { result in
-            switch result {
-            case .success:
-                print("success")
-            case .failure(let error):
-                print("error \(error.errorDescription ?? "error")")
-            }
-        }
         navigationController.pushViewController(stocksVC, animated: false)
     }
 }
