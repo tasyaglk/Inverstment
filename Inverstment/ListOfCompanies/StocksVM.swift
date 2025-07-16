@@ -11,13 +11,15 @@ final class StocksVM {
     private weak var coordinator: AppCoordinator?
     private let stockService: StockService
     private var lastSearchText: String?
+    private let coreDataManager: CoreDataManager
     
     var isStocksSelected: Bool = true
     
-    init(coordinator: AppCoordinator, stockService: StockService = StockService()) {
+    init(coordinator: AppCoordinator, stockService: StockService = StockService(), coreDataManager: CoreDataManager = CoreDataManager()) {
         self.coordinator = coordinator
         self.stockService = stockService
         self.filteredStocks = self.stocks
+        self.coreDataManager = coreDataManager
     }
     
     var stocks: [StocksModel] = []
@@ -69,17 +71,32 @@ final class StocksVM {
     }
     
     func changeFavouriteStatus(id: UUID) {
-        if let index = stocks.firstIndex(where: { $0.id == id }) {
-            let stock = stocks[index]
-            let isFavourite = stock.isFavourite ?? false
-            stocks[index] = StocksModel(stock: stock, isFavourite: !isFavourite)
-            if let searchText = lastSearchText {
-                search(text: searchText)
+        if coreDataManager.changeFavouriteStatus(id: id) {
+            if let index = stocks.firstIndex(where: { $0.id == id }) {
+                let stock = stocks[index]
+                stocks[index] = StocksModel(
+                    id: stock.id,
+                    imageData: stock.imageData,
+                    fullName: stock.fullName,
+                    shortName: stock.shortName,
+                    price: stock.price,
+                    changesPercentage: stock.changesPercentage,
+                    priceChanges: stock.priceChanges,
+                    isFavourite: !(stock.isFavourite ?? false)
+                )
+                
+                if let searchText = lastSearchText, !searchText.isEmpty {
+                    search(text: searchText)
+                } else if !isStocksSelected {
+                    filteredStocks = stocks.filter { $0.isFavourite ?? false }
+                } else {
+                    filteredStocks = stocks
+                }
             } else {
-                filteredStocks = currentStocks
+                print("no stock: \(id)")
             }
         } else {
-            print("no \(id)")
+            print("failed to update favourite status for ID: \(id)")
         }
     }
     
