@@ -106,7 +106,7 @@ final class StocksCell: UITableViewCell {
         fullName.font = UIFont(name: Constants.semiBoldFont, size: Constants.cellSemiBoldFontSize)
         fullName.textColor = .blackColor
         fullName.numberOfLines = 0
-        fullName.lineBreakMode = .byWordWrapping 
+        fullName.lineBreakMode = .byWordWrapping
         
         fullName.translatesAutoresizingMaskIntoConstraints = false
         
@@ -151,7 +151,11 @@ final class StocksCell: UITableViewCell {
     
     func createCell(stocksInfo: StocksModel, rowIndex: Int) {
         backgroundLayer.backgroundColor = rowIndex % 2 == 0 ? .grayColor : .white
-        image.image = UIImage(named: stocksInfo.imageURL ?? "YNDX")
+        if let imageData = stocksInfo.imageData, let imageStock = UIImage(data: imageData) {
+            image.image = imageStock
+        } else {
+            image.image = UIImage(named: "YNDX")
+        }
         shortName.text = stocksInfo.shortName
         fullName.text = stocksInfo.fullName
         let starImage = UIImage(named: stocksInfo.isFavourite ?? false ? "starFilled" : "starNotFilled")

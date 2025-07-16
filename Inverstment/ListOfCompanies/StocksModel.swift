@@ -19,7 +19,7 @@ struct StocksModel {
     //       }
     
     let id: UUID?
-    let imageURL: String?
+    let imageData: Data?
     let fullName: String?
     let shortName: String?
     let price: String?
@@ -29,7 +29,7 @@ struct StocksModel {
     
     init(
         id: UUID?,
-        imageURL: String?,
+        imageData: Data?,
         fullName: String?,
         shortName: String?,
         price: String?,
@@ -38,7 +38,7 @@ struct StocksModel {
         isFavourite: Bool?
     ) {
         self.id = id
-        self.imageURL = imageURL
+        self.imageData = imageData
         self.fullName = fullName
         self.shortName = shortName
         self.price = price
@@ -50,7 +50,7 @@ struct StocksModel {
     init(
         stock: StocksModel,
         id: UUID? = nil,
-        imageURL: String? = nil,
+        imageData: Data? = nil,
         fullName: String? = nil,
         shortName: String? = nil,
         price: String? = nil,
@@ -59,7 +59,7 @@ struct StocksModel {
         isFavourite: Bool? = nil
     ) {
         self.id = id == nil ? stock.id : id
-        self.imageURL = imageURL == nil ? stock.imageURL : imageURL
+        self.imageData = imageData == nil ? stock.imageData : imageData
         self.fullName = fullName == nil ? stock.fullName : fullName
         self.shortName = shortName == nil ? stock.shortName : shortName
         self.price = price == nil ? stock.price : price
