@@ -11,7 +11,6 @@ final class StockService {
     private let config: StockServiceConfig
     private let session: URLSession
     private let coreDataManager: CoreDataManager
-    private let lock = NSLock()
     
     init(config: StockServiceConfig = StockServiceConfig(),
          session: URLSession = .shared,
@@ -86,6 +85,7 @@ final class StockService {
                 
                 var stocks: [StocksModel?] = Array(repeating: nil, count: jsonArray.count)
                 let group = DispatchGroup()
+                let lock = NSLock()
                 
                 for (index, dict) in jsonArray.enumerated() {
                     guard let ticker = dict["ticker"] as? String,
@@ -119,14 +119,14 @@ final class StockService {
                             priceChanges: existingStock.priceChanges ?? "",
                             isFavourite: existingStock.isFavourite
                         )
-                        self.lock.lock()
+                        lock.lock()
                         stocks[index] = stockModel
-                        self.lock.unlock()
+                        lock.unlock()
                         continue
                     }
                     
                     group.enter()
-                    self.fetchImage(from: imageURL) { result in
+                    fetchImage(from: imageURL) { result in
                         let stockModel = StocksModel(
                             id: UUID(),
                             imageData: result.success,
@@ -138,12 +138,12 @@ final class StockService {
                             isFavourite: false
                         )
                         
-                        self.lock.lock()
+                        lock.lock()
                         
                         self.coreDataManager.saveStock(stock: stockModel, imageData: result.success)
                         stocks[index] = stockModel
                         
-                        self.lock.unlock()
+                        lock.unlock()
                         
                         group.leave()
                     }
