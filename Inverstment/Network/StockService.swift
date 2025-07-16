@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StockService {
+final class StockService {
     private let config: StockServiceConfig
     private let session: URLSession
     private let coreDataManager: CoreDataManager
@@ -106,7 +106,7 @@ class StockService {
                         fullPrice = "+$\(String(format: "%.2f", abs(changes))) (\(formattedPercentage)%)"
                     }
                     
-                    let imageURL = "https://financialmodelingprep.com/image-stock/\(ticker).png"
+                    let imageURL = "\(config.imageBaseURL)/\(ticker).png"
                     
                     if let existingStock = self.coreDataManager.fetchStock(ticker: ticker) {
                         let stockModel = StocksModel(

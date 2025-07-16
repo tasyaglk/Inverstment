@@ -89,7 +89,6 @@ final class CoreDataManager {
         
         do {
             try context.save()
-            print("updated status: \(stockEntity.shortName ?? "N/A") \(stockEntity.isFavourite)")
             return true
         } catch {
             print("failed to update favourite status in Core Data: \(error)")
