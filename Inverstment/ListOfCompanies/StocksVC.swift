@@ -11,11 +11,56 @@ class StocksVC: UIViewController {
     
     private var viewModel: StocksVM
     
-    private let searchBar = CustomSearchBar()
-    private let tableView = UITableView()
-    private let stockButton = UIButton()
-    private let favouriteButton = UIButton()
-    private let stackView = UIStackView()
+    private let searchBar: CustomSearchBar = {
+        let searchBar = CustomSearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return searchBar
+    }()
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(StocksCell.self, forCellReuseIdentifier: "cell")
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        
+        return tableView
+    }()
+    
+    private let stockButton: UIButton = {
+        let stockButton = UIButton()
+        
+        stockButton.setTitle(Constants.stocksLabel, for: .normal)
+        stockButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
+        stockButton.setTitleColor(.blackColor, for: .normal)
+        
+        stockButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
+        
+        
+        return stockButton
+    }()
+    
+    private let favouriteButton: UIButton = {
+        let favouriteButton = UIButton()
+        favouriteButton.setTitle(Constants.favouriteLabel, for: .normal)
+        favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
+        favouriteButton.setTitleColor(.grayTextColor, for: .normal)
+        
+        favouriteButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
+        
+        return favouriteButton
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Constants.verticalOffset
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        
+        return stackView
+    }()
     
     init(stocksViewModel: StocksVM) {
         self.viewModel = stocksViewModel
@@ -43,16 +88,12 @@ class StocksVC: UIViewController {
     
     private func setUpView() {
         setUpSearchBar()
-        setUpStockButton()
-        setUpFavouriteButton()
         setUpStack()
         setUpTableView()
     }
     
     private func setUpSearchBar() {
         view.addSubview(searchBar)
-        
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         searchBar.onTextChange = { [weak self] text in
             self?.viewModel.search(text: text)
@@ -75,11 +116,6 @@ class StocksVC: UIViewController {
     private func setUpStack() {
         view.addSubview(stackView)
         
-        stackView.axis = .horizontal
-        stackView.spacing = Constants.verticalOffset
-        stackView.distribution = .fill
-        stackView.alignment = .leading
-        
         stackView.addArrangedSubview(stockButton)
         stackView.addArrangedSubview(favouriteButton)
         
@@ -93,31 +129,8 @@ class StocksVC: UIViewController {
         ])
     }
     
-    private func setUpStockButton() {
-        
-        stockButton.setTitle(Constants.stocksLabel, for: .normal)
-        stockButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.titleFontSize)
-        stockButton.setTitleColor(.blackColor, for: .normal)
-        
-        stockButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
-    }
-    
-    private func setUpFavouriteButton() {
-        
-        favouriteButton.setTitle(Constants.favouriteLabel, for: .normal)
-        favouriteButton.titleLabel?.font = UIFont(name: Constants.boldFont, size: Constants.boldFontSize)
-        favouriteButton.setTitleColor(.grayTextColor, for: .normal)
-        
-        favouriteButton.addTarget(self, action: #selector(stocksTapped), for: .touchUpInside)
-    }
-    
     private func setUpTableView() {
         view.addSubview(tableView)
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(StocksCell.self, forCellReuseIdentifier: "cell")
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
         
         tableView.delegate = self
         tableView.dataSource = self

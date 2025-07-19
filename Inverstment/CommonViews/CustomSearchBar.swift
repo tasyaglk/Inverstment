@@ -9,9 +9,6 @@ import UIKit
 
 final class CustomSearchBar: UIView {
     
-    private let leftArrow = UIImageView()
-    private let clearButton = UIButton(type: .system)
-    
     private lazy var textField: UITextField = {
         let textField = UITextField()
         
@@ -43,6 +40,29 @@ final class CustomSearchBar: UIView {
         textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         
         return textField
+    }()
+    
+    private let leftArrow: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Constants.searchBarSearchIconName)
+        imageView.contentMode = .center
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private let clearButton: UIButton = {
+        let clearButton = UIButton(type: .system)
+        clearButton.setImage(UIImage(named: Constants.searchBarClearIconName), for: .normal)
+        clearButton.tintColor = .blackColor
+        clearButton.isHidden = true
+        
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        
+        return clearButton
     }()
     
     var onTextChange: ((String?) -> Void)?
@@ -77,11 +97,6 @@ final class CustomSearchBar: UIView {
     private func setUpleftArrow() {
         textField.addSubview(leftArrow)
         
-        leftArrow.image = UIImage(named: Constants.searchBarSearchIconName)
-        leftArrow.contentMode = .center
-        
-        leftArrow.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             leftArrow.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: Constants.searchBarIconLeadingPadding),
             leftArrow.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
@@ -92,14 +107,6 @@ final class CustomSearchBar: UIView {
     
     private func setUpClearButton() {
         addSubview(clearButton)
-        
-        clearButton.setImage(UIImage(named: Constants.searchBarClearIconName), for: .normal)
-        clearButton.tintColor = .blackColor
-        clearButton.isHidden = true
-        
-        clearButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             clearButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: Constants.searchBarClearButtonTrailingPadding),
