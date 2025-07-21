@@ -15,12 +15,17 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "71"
             endingLineNumber = "71"
 =======
             startingLineNumber = "72"
             endingLineNumber = "72"
 >>>>>>> main
+=======
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             landmarkName = "changeFavouriteStatus(id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -29,7 +34,10 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             uuid = "7AC788DA-0C89-454E-8C3A-5CED0EF3A213"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -78,7 +86,10 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             uuid = "EBA00A89-DBE2-44DF-8331-71939388844F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -87,16 +98,22 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "StocksVM"
             landmarkType = "3">
 =======
+=======
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "changeButton()"
             landmarkType = "7">
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,12 +127,17 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "86"
             endingLineNumber = "86"
 =======
             startingLineNumber = "87"
             endingLineNumber = "87"
 >>>>>>> main
+=======
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             landmarkName = "changeButton()"
             landmarkType = "7">
          </BreakpointContent>
@@ -131,12 +153,17 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "91"
             endingLineNumber = "91"
 =======
             startingLineNumber = "92"
             endingLineNumber = "92"
 >>>>>>> main
+=======
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             landmarkName = "changeButton()"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,12 +179,17 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "87"
             endingLineNumber = "87"
 =======
             startingLineNumber = "88"
             endingLineNumber = "88"
 >>>>>>> main
+=======
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+>>>>>>> 53e4a2e33decaebee92696fa2736c298597694b2
             landmarkName = "changeButton()"
             landmarkType = "7">
          </BreakpointContent>
