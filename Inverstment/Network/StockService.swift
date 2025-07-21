@@ -7,14 +7,17 @@
 
 import UIKit
 
-class StockService {
+final class StockService {
     private let config: StockServiceConfig
     private let session: URLSession
+    private let coreDataManager: CoreDataManager
     
     init(config: StockServiceConfig = StockServiceConfig(),
-         session: URLSession = .shared) {
+         session: URLSession = .shared,
+         coreDataManager: CoreDataManager = CoreDataManager()) {
         self.config = config
         self.session = session
+        self.coreDataManager = coreDataManager
     }
     
     private func fetchImage(from urlString: String, completion: @escaping (Result<Data, StockServiceError>) -> Void) {
@@ -103,10 +106,27 @@ class StockService {
                         fullPrice = "+$\(String(format: "%.2f", abs(changes))) (\(formattedPercentage)%)"
                     }
                     
-                    let imageURL = "https://financialmodelingprep.com/image-stock/\(ticker).png"
+                    let imageURL = "\(config.imageBaseURL)/\(ticker).png"
+                    
+                    if let existingStock = self.coreDataManager.fetchStock(ticker: ticker) {
+                        let stockModel = StocksModel(
+                            id: existingStock.id ?? UUID(),
+                            imageData: existingStock.image,
+                            fullName: existingStock.fullName ?? "",
+                            shortName: existingStock.shortName ?? "",
+                            price: existingStock.price ?? "",
+                            changesPercentage: existingStock.changesPercentage ?? "",
+                            priceChanges: existingStock.priceChanges ?? "",
+                            isFavourite: existingStock.isFavourite
+                        )
+                        lock.lock()
+                        stocks[index] = stockModel
+                        lock.unlock()
+                        continue
+                    }
                     
                     group.enter()
-                    self.fetchImage(from: imageURL) { result in
+                    fetchImage(from: imageURL) { result in
                         let stockModel = StocksModel(
                             id: UUID(),
                             imageData: result.success,
@@ -120,6 +140,7 @@ class StockService {
                         
                         lock.lock()
                         
+                        self.coreDataManager.saveStock(stock: stockModel, imageData: result.success)
                         stocks[index] = stockModel
                         
                         lock.unlock()

@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0043863E2E2726F400CB1434 /* StockEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043863C2E2726F400CB1434 /* StockEntity+CoreDataClass.swift */; };
+		0043863F2E2726F400CB1434 /* StockEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043863D2E2726F400CB1434 /* StockEntity+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0031030B2DA1D00F0058CACD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		003102F12DA1D00D0058CACD /* Inverstment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inverstment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0031030A2DA1D00F0058CACD /* InverstmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InverstmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		003103142DA1D00F0058CACD /* InverstmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InverstmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0043863C2E2726F400CB1434 /* StockEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0043863D2E2726F400CB1434 /* StockEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +95,8 @@
 		003102E82DA1D00D0058CACD = {
 			isa = PBXGroup;
 			children = (
+				0043863C2E2726F400CB1434 /* StockEntity+CoreDataClass.swift */,
+				0043863D2E2726F400CB1434 /* StockEntity+CoreDataProperties.swift */,
 				003102F32DA1D00D0058CACD /* Inverstment */,
 				0031030D2DA1D00F0058CACD /* InverstmentTests */,
 				003103172DA1D00F0058CACD /* InverstmentUITests */,
@@ -249,6 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0043863E2E2726F400CB1434 /* StockEntity+CoreDataClass.swift in Sources */,
+				0043863F2E2726F400CB1434 /* StockEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
