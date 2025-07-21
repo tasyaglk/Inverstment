@@ -12,6 +12,7 @@ enum Constants {
     static let horizontalOffset: CGFloat = 16
     static let titleFontSize: CGFloat = 28
     static let boldFontSize: CGFloat = 18
+    static let semiBoldFontSize: CGFloat = 16
     
     static let cellBoldFontSize: CGFloat = 18
     static let cellSemiBoldFontSize: CGFloat = 12
@@ -28,9 +29,29 @@ enum Constants {
     
     static let buttonSize: CGFloat = 16
     
+    static let stackViewSpacing: CGFloat = 16
+    static let stackViewHeight: CGFloat = 32
+    static let stackViewTopOffset: CGFloat = 20
+    static let tableViewOffset: CGFloat = 16
+    
+    static let searchBarHeight: CGFloat = 48
+    static let searchBarCornerRadius: CGFloat = 20
+    static let searchBarBorderWidth: CGFloat = 1
+    static let searchBarLeftPadding: CGFloat = 48
+    static let searchBarIconLeadingPadding: CGFloat = 10
+    static let searchBarIconSize: CGFloat = 20
+    static let searchBarClearButtonTrailingPadding: CGFloat = -10
+    static let searchBarPlaceholderText: String = "Find company or ticker"
+    static let searchBarSearchIconName: String = "Search"
+    static let searchBarBackIconName: String = "Back"
+    static let searchBarClearIconName: String = "Close"
+    
+    static let cellIdentifier = "StocksCell"
+    
     static let stocksLabel = "Stocks"
     static let favouriteLabel = "Favourite"
     
     static let boldFont = "Montserrat-Bold"
     static let semiBoldFont = "Montserrat-SemiBold"
+    
 }
